@@ -25,6 +25,13 @@
 /* When you use this, send an email to: matumoto@math.keio.ac.jp   */
 /* with an appropriate reference to your work.                     */
 
+/* REFERENCE                                                       */
+/* M. Matsumoto and T. Nishimura,                                  */
+/* "Mersenne Twister: A 623-Dimensionally Equidistributed Uniform  */
+/* Pseudo-Random Number Generator",                                */
+/* ACM Transactions on Modeling and Computer Simulation,           */
+/* Vol. 8, No. 1, January 1998, pp 3--30.                          */
+
 #include<stdio.h>
 
 /* Period parameters */  
