@@ -21,9 +21,10 @@
 /* Free Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA   */ 
 /* 02111-1307  USA                                                 */
 
-/* Copyright (C) 1997, 1999 Makoto Matsumoto and Takuji Nishimura. */
-/* When you use this, send an email to: matumoto@math.keio.ac.jp   */
-/* with an appropriate reference to your work.                     */
+/* Copyright (C) 1997 Makoto Matsumoto and Takuji Nishimura.       */
+/* Any feedback is very welcome. For any question, comments,       */
+/* see http://www.math.keio.ac.jp/matumoto/emt.html or email       */
+/* matumoto@math.keio.ac.jp                                        */
 
 /* REFERENCE                                                       */
 /* M. Matsumoto and T. Nishimura,                                  */
