@@ -24,8 +24,9 @@
 /* 02111-1307  USA                                                 */
 
 /* Copyright (C) 1997, 1999 Makoto Matsumoto and Takuji Nishimura. */
-/* When you use this, send an email to: matumoto@math.keio.ac.jp   */
-/* with an appropriate reference to your work.                     */
+/* Any feedback is very welcome. For any question, comments,       */
+/* see http://www.math.keio.ac.jp/matumoto/emt.html or email       */
+/* matumoto@math.keio.ac.jp                                        */
 
 /* REFERENCE                                                       */
 /* M. Matsumoto and T. Nishimura,                                  */
