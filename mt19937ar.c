@@ -72,8 +72,8 @@ void init_genrand(unsigned long s)
 /* initialize by an array with array-length */
 /* init_key is the array for initializing keys */
 /* key_length is its length */
-void init_by_array(init_key, key_length)
-unsigned long init_key[], key_length;
+/* slight change for C++, 2004/2/26 */
+void init_by_array(unsigned long init_key[],int key_length)
 {
     int i, j, k;
     init_genrand(19650218UL);
