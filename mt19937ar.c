@@ -37,8 +37,8 @@
 
 
    Any feedback is very welcome.
-   http://www.math.keio.ac.jp/matumoto/emt.html
-   email: matumoto@math.keio.ac.jp
+   http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/emt.html
+   email: m-mat @ math.sci.hiroshima-u.ac.jp (remove space)
 */
 
 #include <stdio.h>
@@ -73,7 +73,7 @@ void init_genrand(unsigned long s)
 /* init_key is the array for initializing keys */
 /* key_length is its length */
 /* slight change for C++, 2004/2/26 */
-void init_by_array(unsigned long init_key[],int key_length)
+void init_by_array(unsigned long init_key[], int key_length)
 {
     int i, j, k;
     init_genrand(19650218UL);
