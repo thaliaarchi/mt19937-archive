@@ -1,12 +1,13 @@
-/* A C-program for MT19937: Real number version([0,1)-interval) (1998/4/6) */
-/*   genrand() generates one pseudorandom real number (double) */
-/* which is uniformly distributed on [0,1)-interval, for each  */
-/* call. sgenrand(seed) set initial values to the working area */
-/* of 624 words. Before genrand(), sgenrand(seed) must be      */
-/* called once. (seed is any 32-bit integer except for 0).     */
-/* Integer generator is obtained by modifying two lines.       */
-/*   Coded by Takuji Nishimura, considering the suggestions by */
-/* Topher Cooper and Marc Rieffel in July-Aug. 1997.           */
+/* A C-program for MT19937: Real number version([0,1)-interval) */
+/* (1999/10/28)                                                 */
+/*   genrand() generates one pseudorandom real number (double)  */
+/* which is uniformly distributed on [0,1)-interval, for each   */
+/* call. sgenrand(seed) sets initial values to the working area */
+/* of 624 words. Before genrand(), sgenrand(seed) must be       */
+/* called once. (seed is any 32-bit integer.)                   */
+/* Integer generator is obtained by modifying two lines.        */
+/*   Coded by Takuji Nishimura, considering the suggestions by  */
+/* Topher Cooper and Marc Rieffel in July-Aug. 1997.            */
 
 /* This library is free software; you can redistribute it and/or   */
 /* modify it under the terms of the GNU Library General Public     */
@@ -22,7 +23,7 @@
 /* Free Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA   */ 
 /* 02111-1307  USA                                                 */
 
-/* Copyright (C) 1997 Makoto Matsumoto and Takuji Nishimura.       */
+/* Copyright (C) 1997, 1999 Makoto Matsumoto and Takuji Nishimura. */
 /* When you use this, send an email to: matumoto@math.keio.ac.jp   */
 /* with an appropriate reference to your work.                     */
 
@@ -53,18 +54,41 @@
 static unsigned long mt[N]; /* the array for the state vector  */
 static int mti=N+1; /* mti==N+1 means mt[N] is not initialized */
 
-/* initializing the array with a NONZERO seed */
+/* Initializing the array with a seed */
 void
 sgenrand(seed)
     unsigned long seed;	
 {
-    /* setting initial seeds to mt[N] using         */
-    /* the generator Line 25 of Table 1 in          */
-    /* [KNUTH 1981, The Art of Computer Programming */
-    /*    Vol. 2 (2nd Ed.), pp102]                  */
-    mt[0]= seed & 0xffffffff;
-    for (mti=1; mti<N; mti++)
-        mt[mti] = (69069 * mt[mti-1]) & 0xffffffff;
+    int i;
+
+    for (i=0;i<N;i++) {
+         mt[i] = seed & 0xffff0000;
+         seed = 69069 * seed + 1;
+         mt[i] |= (seed & 0xffff0000) >> 16;
+         seed = 69069 * seed + 1;
+    }
+    mti = N;
+}
+
+/* Initialization by "sgenrand()" is an example. Theoretically,      */
+/* there are 2^19937-1 possible states as an intial state.           */
+/* This function allows to choose any of 2^19937-1 ones.             */
+/* Essential bits in "seed_array[]" is following 19937 bits:         */
+/*  (seed_array[0]&UPPER_MASK), seed_array[1], ..., seed_array[N-1]. */
+/* (seed_array[0]&LOWER_MASK) is discarded.                          */ 
+/* Theoretically,                                                    */
+/*  (seed_array[0]&UPPER_MASK), seed_array[1], ..., seed_array[N-1]  */
+/* can take any values except all zeros.                             */
+void
+lsgenrand(seed_array)
+    unsigned long seed_array[];
+    /* the length of seed_array[] must be at least N */
+{
+    int i;
+
+    for (i=0;i<N;i++) 
+      mt[i] = seed_array[i];
+    mti=N;
 }
 
 double /* generating reals */
@@ -105,15 +129,14 @@ genrand()
     /* return y; */ /* for integer generation */
 }
 
-/* this main() outputs first 1000 generated numbers  */
+/* This main() outputs first 1000 generated numbers.  */
 main()
 { 
-    int j;
+    int i;
 
-    sgenrand(4357); /* any nonzero integer can be used as a seed */
-    for (j=0; j<1000; j++) {
+    sgenrand(4357);
+    for (i=0; i<1000; i++) {
         printf("%10.8f ", genrand());
-        if (j%8==7) printf("\n");
+        if (i%5==4) printf("\n");
     }
-    printf("\n");
 }
