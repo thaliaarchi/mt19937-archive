@@ -1,4 +1,4 @@
-/* A C-program for MT19937: Real number version (1998/4/6)     */
+/* A C-program for MT19937: Real number version  (1998/4/6)    */
 /*   genrand() generates one pseudorandom real number (double) */
 /* which is uniformly distributed on [0,1]-interval, for each  */
 /* call. sgenrand(seed) set initial values to the working area */
@@ -94,7 +94,7 @@ genrand()
     y ^= TEMPERING_SHIFT_T(y) & TEMPERING_MASK_C;
     y ^= TEMPERING_SHIFT_L(y);
 
-    return ( (double)y / (unsigned long)0xffffffff ); /* reals */
+    return ( (double)y * 2.3283064370807974e-10 ); /* reals */
     /* return y; */ /* for integer generation */
 }
 
@@ -105,7 +105,7 @@ main()
 
     sgenrand(4357); /* any nonzero integer can be used as a seed */
     for (j=0; j<1000; j++) {
-        printf("%5f ", genrand());
+        printf("%10.8f ", genrand());
         if (j%8==7) printf("\n");
     }
     printf("\n");
