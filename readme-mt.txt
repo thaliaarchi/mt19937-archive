@@ -1,10 +1,13 @@
 This is a Mersenne Twister pseudorandom number generator
 with period 2^19937-1 with improved initialization scheme,
 modified on 2002/1/26 by Takuji Nishimura and Makoto Matsumoto. 
+modified on 2005/4/26 by Mutsuo Saito
 
 Contents of this tar ball:
 readme-mt.txt	 this file
 mt19937ar.c	 the C source (ar: initialize by ARray)
+mt19937ar.h      the C header file for mt19937ar
+mtTest.c         the C test main program of mt19937ar.c
 mt19937ar.out	 Test outputs of six types generators. 1000 for each
 
 1. Initialization
@@ -71,4 +74,6 @@ Vol. 8, No. 1, January 1998, pp 3--30.
 
 -------
 Copyright (C) 1997 - 2002, Makoto Matsumoto and Takuji Nishimura,
+All rights reserved.
+Copyright (C) 2005, Mutsuo Saito
 All rights reserved.
